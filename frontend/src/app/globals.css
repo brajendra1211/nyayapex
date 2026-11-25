@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Brand palette: Royal Blue #0B2D6B, Apex Gold #D4AF37, Legal White #F5F7FF */
+:root {
+  --bg: #f5f7ff;
+  --surface: #ffffff;
+  --surface-2: #eef1fa;
+  --line: #dde2ef;
+  --ink: #0b1733;
+  --ink-2: #45506a;
+  --muted: #737d94;
+  --brand: #0b2d6b;
+  --brand-ink: #ffffff;
+  --accent: #d4af37;
+  --accent-soft: #faf3dc;
+  --accent-ink: #8a6a12; /* gold dark enough for small text on white */
+  --side-bg: #071b44; /* deep royal: keeps the blue "N" of the logo visible */
+  --side-ink: #cfd8ec;
+  --side-active: #12398a;
+  --good: #0ca30c;
+  --warn: #fab219;
+  --bad: #d03b3b;
+  --good-ink: #006300;
+  --warn-ink: #8a5a00;
+  --bad-ink: #b02a2a;
+  --series: #2a78d6;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #08101f;
+  --surface: #0f1a30;
+  --surface-2: #16223b;
+  --line: #25314b;
+  --ink: #eef1f8;
+  --ink-2: #b6bfd2;
+  --muted: #8892a8;
+  --brand: #4d7bd6;
+  --brand-ink: #ffffff;
+  --accent: #d4af37;
+  --accent-soft: #2a2410;
+  --accent-ink: #e2c25e;
+  --side-bg: #061634;
+  --side-ink: #b4bfd8;
+  --side-active: #12295a;
+  --good-ink: #4fd34f;
+  --warn-ink: #fab219;
+  --bad-ink: #ff7a7a;
+  --series: #3987e5;
+  color-scheme: dark;
+}
+
+/* Courtroom readability mode: bigger type, maximum contrast, no decoration */
+:root[data-courtroom="on"] {
+  font-size: 118%;
+  --ink-2: var(--ink);
+  --muted: var(--ink-2);
+  --line: #9aa3b2;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-side: var(--side-bg);
+  --color-side-ink: var(--side-ink);
+  --color-side-active: var(--side-active);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --color-good-ink: var(--good-ink);
+  --color-warn-ink: var(--warn-ink);
+  --color-bad-ink: var(--bad-ink);
+  --color-series: var(--series);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces), Georgia, serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.prose-draft {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+
+/* ---------- public website ---------- */
+.site-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.site-glow {
+  background: radial-gradient(60% 70% at 85% 10%, rgba(212, 175, 55, 0.22), transparent 60%),
+    radial-gradient(50% 60% at 0% 100%, rgba(77, 123, 214, 0.35), transparent 60%);
+}
+@keyframes site-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.site-rise { animation: site-rise 0.7s ease-out both; }
+.site-rise-2 { animation: site-rise 0.7s 0.15s ease-out both; }
+@media (prefers-reduced-motion: reduce) { .site-rise, .site-rise-2 { animation: none; } }
+details.faq > summary { list-style: none; cursor: pointer; }
+details.faq > summary::-webkit-details-marker { display: none; }
+details.faq[open] .faq-icon { transform: rotate(45deg); }

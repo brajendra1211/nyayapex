@@ -1,0 +1,28 @@
+backend/.venv/
+backend/.env
+backend/nyay.db
+backend/uploads/
+__pycache__/
+*.pyc
+backend/models/
+backend/data/statutes/raw/*.pdf
+
+# frontend build and dependencies
+frontend/node_modules/
+frontend/.next/
+frontend/.env*
+frontend/next-env.d.ts
+*.tsbuildinfo
+
+# local / generated
+backend/*.db
+backend/data/statutes/raw/
+*.log
+.DS_Store
+Thumbs.db
+
+# confidential documents (not for the public repository)
+docs/copyright/
+docs/copyright.rar
+docs/*.pdf
+docs/*.docx
